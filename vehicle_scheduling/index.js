@@ -66,14 +66,13 @@ async function runScheduler() {
 
         console.log(`\n=== 🚛 VEHICLE MAINTENANCE SCHEDULER ===\n`);
 
-        // Calculate the optimal schedule for each depot
         depots.forEach(depot => {
             const result = optimizeSchedule(vehicles, depot.MechanicHours);
             
-            console.log(`📍 Depot ID: ${depot.ID} | Budget: ${depot.MechanicHours} hrs`);
-            console.log(`   ✅ Max Impact Score : ${result.maxImpact}`);
-            console.log(`   ⏱️  Total Time Used  : ${result.timeUsed} hrs`);
-            console.log(`   📋 Tasks Scheduled  : ${result.selectedTasks.length} vehicles`);
+            console.log(`   Depot ID: ${depot.ID} | Budget: ${depot.MechanicHours} hrs`);
+            console.log(`   Max Impact Score : ${result.maxImpact}`);
+            console.log(`   Total Time Used  : ${result.timeUsed} hrs`);
+            console.log(`   Tasks Scheduled  : ${result.selectedTasks.length} vehicles`);
             console.log('-'.repeat(40));
         });
 
@@ -81,7 +80,7 @@ async function runScheduler() {
 
     } catch (error) {
         await Log('backend', 'error', 'service', `Scheduler Error: ${error.message}`);
-        console.error("❌ Error running scheduler:", error.message);
+        console.error("Error running scheduler:", error.message);
     }
 }
 

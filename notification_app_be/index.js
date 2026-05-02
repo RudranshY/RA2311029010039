@@ -1,7 +1,6 @@
 const axios = require('axios');
 const Log = require('../logging_middleware/index'); 
 
-// Fixed URL string:
 const API_URL = 'http://20.207.122.201/evaluation-service/notifications';
 const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJyeTk5NDBAc3JtaXN0LmVkdS5pbiIsImV4cCI6MTc3NzcwNTc2MSwiaWF0IjoxNzc3NzA0ODYxLCJpc3MiOiJBZmZvcmQgTWVkaWNhbCBUZWNobm9sb2dpZXMgUHJpdmF0ZSBMaW1pdGVkIiwianRpIjoiNWU5NzkxN2MtNzFhMC00ZTZmLWIxNDEtYzk1OTU3YTUyNzk4IiwibG9jYWxlIjoiZW4tSU4iLCJuYW1lIjoicnVkcmFuc2ggeWFkYXYiLCJzdWIiOiIyM2Y5YjAzMS00YmE2LTQyZDEtYjg0Yi03YzUyNjhjMWZiNWQifSwiZW1haWwiOiJyeTk5NDBAc3JtaXN0LmVkdS5pbiIsIm5hbWUiOiJydWRyYW5zaCB5YWRhdiIsInJvbGxObyI6InJhMjMxMTAyOTAxMDAzOSIsImFjY2Vzc0NvZGUiOiJRa2JweEgiLCJjbGllbnRJRCI6IjIzZjliMDMxLTRiYTYtNDJkMS1iODRiLTdjNTI2OGMxZmI1ZCIsImNsaWVudFNlY3JldCI6ImRCdWpnZFB0RGtNeVp4aHYifQ.qLkx-wPO17eQxr33d4B0ijtLc69JXy4C3WH6sxhCh1Y';
 
@@ -22,7 +21,7 @@ async function generatePriorityInbox(topN = 10) {
         const notifications = response.data.notifications || [];
         await Log('backend', 'debug', 'service', `Successfully fetched ${notifications.length} notifications from server`);
 
-        // Sorting Logic
+  
         notifications.sort((a, b) => {
             const weightA = PRIORITY_WEIGHTS[a.Type] || 0;
             const weightB = PRIORITY_WEIGHTS[b.Type] || 0;
@@ -52,7 +51,7 @@ async function generatePriorityInbox(topN = 10) {
 
     } catch (error) {
         await Log('backend', 'error', 'service', `Priority Inbox Error: ${error.message}`);
-        console.error("❌ Error fetching notifications:", error.message);
+        console.error(" Error fetching notifications:", error.message);
     }
 }
 generatePriorityInbox(10);
