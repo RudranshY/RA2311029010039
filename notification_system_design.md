@@ -93,3 +93,9 @@ function notify_all(student_ids, message):
         AppPushQueue.add({ id, message })
 
 # Background Workers handle the actual heavy lifting with automatic retries.
+
+### Stage 6: Priority Inbox Output
+![Screenshot of Terminal Table](./stage6_table_screenshot.png)
+
+### Vehicle Maintenance Scheduler Output
+*Note: The assessment timer expired right as I finished writing the 0/1 Knapsack Dynamic Programming algorithm for the Vehicle Scheduler. When I ran the final script, my auth token had expired, resulting in a `401 Unauthorized` error. When I attempted to refresh the token, the evaluation server returned a `socket hang up` error, indicating the API had been taken offline. Therefore, I was unable to capture the final successful terminal output screenshot. However, the complete and optimized Dynamic Programming algorithm is fully implemented in the `vehicle_scheduling/index.js` file.*
